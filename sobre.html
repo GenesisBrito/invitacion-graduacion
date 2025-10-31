@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre de Invitación</title>
+    <link rel="stylesheet" href="css/sobre1.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #9693dd;
+        }
+
+        .envelope {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .invitacion {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .boton-confirmacion {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #072753;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: 0.9;
+        }
+
+        .boton-confirmacion:hover {
+            opacity: 1;
+        }
+
+        #openBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #072753;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #openBtn:hover {
+            background-color: #0a3a7a;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="pocket"></div>
+        <div class="flap2"></div>
+        <div class="flap3"></div>
+        <div class="flap-left"></div>
+        <div class="flap-right"></div>
+        <div class="seal" id="seal"></div>
+
+        <div class="letter" style="top: -30%; left: 5%;">
+            <div class="invitacion">
+                <div class="imagen-graduacion">
+                    <img src="images/invitacion.png" alt="Imagen de Graduación">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0vAQB6IAO2XokEP1FKtKbypuJuJ_yP2lqlKUZxf1VVK_fsg/viewform?usp=header" target="_blank">
+                        <button class="boton-confirmacion" style="top: 92%; left: 90%;">Confirmar Asistencia</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="openBtn">Abrir / Cerrar</button>
+
+    <script>
+        const envelope = document.getElementById('envelope');
+        const btn = document.getElementById('openBtn');
+
+        btn.addEventListener('click', toggleEnvelope);
+        envelope.addEventListener('click', toggleEnvelope);
+
+        const confirmButton = document.querySelector('.boton-confirmacion');
+        confirmButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSc0vAQB6IAO2XokEP1FKtKbypuJuJ_yP2lqlKUZxf1VVK_fsg/viewform?usp=header', '_blank');
+        });
+
+        function toggleEnvelope() {
+            envelope.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
