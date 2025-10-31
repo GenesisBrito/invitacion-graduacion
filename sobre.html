@@ -75,14 +75,25 @@
         <div class="flap-left"></div>
         <div class="flap-right"></div>
         <div class="seal" id="seal"></div>
-
         <div class="letter" style="top: -30%; left: 5%;">
             <div class="invitacion">
                 <div class="imagen-graduacion">
                     <img src="images/invitacion.png" alt="Imagen de Graduación">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0vAQB6IAO2XokEP1FKtKbypuJuJ_yP2lqlKUZxf1VVK_fsg/viewform?usp=header" target="_blank">
-                        <button class="boton-confirmacion" style="top: 90%; left: 99%;"><strong>Confirmar Asistencia</strong></button>
+                        <button class="boton-confirmacion" style="font-family: 'Karma', serif; top: 90%; left: 99%;"><strong>Confirmar Asistencia</strong></button>
                     </a>
+                    <div class="center-map-btn">
+                        <a href="https://maps.app.goo.gl/FckChzQuHqKJoMzs7"
+                             target="_blank" rel="noopener"
+                             onclick="event.stopPropagation();"
+                             aria-label="Abrir direcciones en Google Maps"
+                             style="text-decoration:none;">
+                            <button class="boton-mapa"
+                                    style="font-family: 'Karma', serif; background-color: #072753; color: #c0c0c0; border: none; cursor: pointer; position: absolute; ">
+                                <span style="font-family: 'Karma', serif; display:inline-block; text-align:center ;">Lugar: Iglesia de Dios COMFEID</span>
+                            </button>
+                        </a>
+                    </div>
                 </div>
                 <div class="texto-invitacion">
                     <button
@@ -96,7 +107,75 @@
             </div>
         </div>
     </div>
+    <style>
+        /* Coloca las instrucciones fija a la derecha y hace responsive */
+        #instructions {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 320px;
+            z-index: 10000;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            color: #e6eef8;
+            font-family: 'Karma', serif;
+            padding: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+        }
+        #instructions #instructionsContent {
+            display: none;
+            line-height: 1.5;
+            max-height: 60vh;
+            overflow: auto;
+        }
+        @media (max-width: 760px) {
+            /* En pantallas pequeñas, baja el panel y lo hace ancho */
+            #instructions {
+                right: 10px;
+                left: 10px;
+                top: auto;
+                bottom: 10px;
+                width: auto;
+            }
+            #instructions #toggleInstructions {
+                width: 100%;
+            }
+        }
+    </style>
 
+    <section id="instructions" role="region" aria-label="Instrucciones de uso">
+        <button id="toggleInstructions" aria-expanded="false" style="display:inline-block;margin-bottom:12px;padding:8px 12px;border-radius:8px;border:none;background:#072753;color:#fff;cursor:pointer;">
+            Mostrar instrucciones
+        </button>
+        <div id="instructionsContent" style="line-height:1.5;">
+            <h2 style="margin:6px 0 12px;font-size:18px;">Instrucciones para usar la página</h2>
+            <ol style="padding-left:18px;margin:0 0 12px;">
+                <li><strong>Ver la invitación:</strong> pulse el botón "Abrir / Cerrar" o haga clic en el sobre para abrir y cerrar la invitación.</li>
+                <li><strong>Confirmar asistencia:</strong> pulse el botón "Confirmar Asistencia". Se abrirá un formulario en otra pestaña.</li>
+                <li><strong>Ver la ubicación:</strong> pulse el botón que dice "Lugar: Iglesia de Dios COMFEID" para abrir Google Maps (se abre en otra pestaña).</li>
+                <li><strong>Cerrar la invitación:</strong> use la X dentro de la invitación o pulse de nuevo "Abrir / Cerrar".</li>
+                <li><strong>Enlaces y nuevas pestañas:</strong> los enlaces se abren en una pestaña nueva; permita ventanas emergentes si su navegador lo solicita.</li>
+                <li><strong>Si no funciona:</strong> asegúrese de que JavaScript esté habilitado en su navegador y que tenga conexión a Internet.</li>
+            </ol>
+            <p style="margin:0;font-size:14px;">Consejo: si usa teléfono, mantenga el móvil en posición vertical y toque los botones con el dedo. Si necesita ayuda, pida a un familiar o amigo que le muestre cómo hacer clic o tocar en la pantalla.</p>
+        </div>
+    </section>
+
+    <script>
+        (function(){
+            const toggleBtn = document.getElementById('toggleInstructions');
+            const content = document.getElementById('instructionsContent');
+            toggleBtn.addEventListener('click', (e) => {
+                const isHidden = content.style.display === 'none' || content.style.display === '';
+                content.style.display = isHidden ? 'block' : 'none';
+                toggleBtn.textContent = isHidden ? 'Ocultar instrucciones' : 'Mostrar instrucciones';
+                toggleBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+                e.stopPropagation();
+            });
+        })();
+    </script>
+    
     <script>
       function showConfetti() {
         for (let i = 0; i < 50; i++) {

@@ -175,7 +175,19 @@ body {
 /* ==========================================
   BOTÓN
   ========================================== */
+.imagen-graduacion { position: relative; }
 
+.imagen-graduacion .center-map-btn {
+    position: absolute;
+    top: 57%;
+    left: 125%;
+    transform: translate(-55%, -55%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    width: 55px;
+    height: 40px;
+}
 #openBtn {
   margin-top: 20px;
   padding: 10px 22px;
